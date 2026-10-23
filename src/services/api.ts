@@ -4,6 +4,7 @@ import { isSlotTaken, MIN_NOTICE_HOURS } from '../utils/availability'
 import { bookingStart } from '../utils/dates'
 import { canCancel } from '../utils/bookings'
 import { load, save } from './storage'
+import { loadUserContent, mergeUserContent } from './userContent'
 
 /**
  * Capa de acceso a datos. La UI sólo habla con `SportlyApi`.
@@ -51,9 +52,10 @@ export const localApi: SportlyApi = {
     // Se lee SIEMPRE el estado persistido más reciente (no el estado de React) para evitar dobles reservas,
     // incluso entre pestañas. En el servidor real esto debe ser una restricción única + transacción.
     const all = load<Booking[]>('bookings', [])
-    const service = SERVICES.find((s) => s.id === input.serviceId && s.monitorId === input.monitorId && s.status === 'active')
+    const cat = mergeUserContent(localApi.catalog(), loadUserContent(), {})
+    const service = cat.services.find((s) => s.id === input.serviceId && s.monitorId === input.monitorId && s.status === 'active')
     if (!service) throw new BookingError('invalid', 'El entrenamiento seleccionado no existe.')
-    const av = AVAILABILITY.find((a) => a.monitorId === input.monitorId)
+    const av = cat.availability.find((a) => a.monitorId === input.monitorId)
     const day = ((new Date(`${input.date}T00:00:00`).getDay() + 6) % 7) + 1
     const offered = av?.days[day as 1 | 2 | 3 | 4 | 5 | 6 | 7]
     if (!offered?.includes(input.time)) throw new BookingError('invalid', 'Ese horario no forma parte de la disponibilidad del monitor.')

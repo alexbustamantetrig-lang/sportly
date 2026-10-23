@@ -5,9 +5,9 @@ import type { Monitor, Review, Service, Video, WeeklyAvailability } from '../typ
  * Personas, valoraciones, vídeos y horarios no corresponden a profesionales reales.
  * Sustituir por datos de backend (ver services/api.ts) y mantener separado de usuarios y reservas reales.
  *
- * Vídeos: `Video.src` se deja vacío a propósito (no se inventan URL). Mientras no exista `src`,
- * el feed muestra una sustitución visual marcada como "Contenido de prueba".
- * Para usar vídeo real, añade una URL accesible (mp4 vertical 9:16) en `src`.
+ * Vídeos: `Video.src` apunta a clips de ejemplo públicos (gtv-videos-bucket de Google). Son vídeos reales
+ * pero NO son de deporte: sirven de relleno. Cambia `src` por tu mp4 vertical 9:16 o súbelos desde
+ * «Perfil → Mi perfil de monitor». Si un vídeo no carga, el feed muestra la ilustración de sustitución.
  */
 
 export const MONITORS: Monitor[] = [
@@ -538,6 +538,7 @@ export const SERVICES: Service[] = [
 export const VIDEOS: Video[] = [
   {
     "id": "v-m-elena-1",
+    "src": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
     "monitorId": "m-elena",
     "caption": "3 claves para empezar a esquiar sin miedo",
     "sport": "Esquí",
@@ -548,6 +549,7 @@ export const VIDEOS: Video[] = [
   },
   {
     "id": "v-m-elena-2",
+    "src": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
     "monitorId": "m-elena",
     "caption": "Sesión de esquí: ejercicio clave",
     "sport": "Esquí",
@@ -558,6 +560,7 @@ export const VIDEOS: Video[] = [
   },
   {
     "id": "v-m-diego-1",
+    "src": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
     "monitorId": "m-diego",
     "caption": "Del carving al primer 180",
     "sport": "Snowboard",
@@ -568,6 +571,7 @@ export const VIDEOS: Video[] = [
   },
   {
     "id": "v-m-diego-2",
+    "src": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
     "monitorId": "m-diego",
     "caption": "Sesión de snowboard: ejercicio clave",
     "sport": "Snowboard",
@@ -578,6 +582,7 @@ export const VIDEOS: Video[] = [
   },
   {
     "id": "v-m-marco-1",
+    "src": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
     "monitorId": "m-marco",
     "caption": "Cómo levantarte en la tabla a la primera",
     "sport": "Surf",
@@ -588,6 +593,7 @@ export const VIDEOS: Video[] = [
   },
   {
     "id": "v-m-marco-2",
+    "src": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
     "monitorId": "m-marco",
     "caption": "Sesión de surf: ejercicio clave",
     "sport": "Surf",
@@ -598,6 +604,7 @@ export const VIDEOS: Video[] = [
   },
   {
     "id": "v-m-laura-1",
+    "src": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
     "monitorId": "m-laura",
     "caption": "El saque que cambia tu partido",
     "sport": "Tenis",
@@ -608,6 +615,7 @@ export const VIDEOS: Video[] = [
   },
   {
     "id": "v-m-laura-2",
+    "src": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
     "monitorId": "m-laura",
     "caption": "Sesión de tenis: ejercicio clave",
     "sport": "Tenis",
@@ -618,6 +626,7 @@ export const VIDEOS: Video[] = [
   },
   {
     "id": "v-m-pablo-1",
+    "src": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
     "monitorId": "m-pablo",
     "caption": "La bandeja perfecta, paso a paso",
     "sport": "Pádel",
@@ -628,6 +637,7 @@ export const VIDEOS: Video[] = [
   },
   {
     "id": "v-m-pablo-2",
+    "src": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
     "monitorId": "m-pablo",
     "caption": "Sesión de pádel: ejercicio clave",
     "sport": "Pádel",
@@ -638,6 +648,7 @@ export const VIDEOS: Video[] = [
   },
   {
     "id": "v-m-irene-1",
+    "src": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
     "monitorId": "m-irene",
     "caption": "Respira bien y nada sin cansarte",
     "sport": "Natación",
@@ -648,6 +659,7 @@ export const VIDEOS: Video[] = [
   },
   {
     "id": "v-m-irene-2",
+    "src": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
     "monitorId": "m-irene",
     "caption": "Sesión de natación: ejercicio clave",
     "sport": "Natación",
@@ -658,6 +670,7 @@ export const VIDEOS: Video[] = [
   },
   {
     "id": "v-m-raul-1",
+    "src": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
     "monitorId": "m-raul",
     "caption": "Control orientado: el ejercicio de 5 minutos",
     "sport": "Fútbol",
@@ -668,6 +681,7 @@ export const VIDEOS: Video[] = [
   },
   {
     "id": "v-m-raul-2",
+    "src": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
     "monitorId": "m-raul",
     "caption": "Sesión de fútbol: ejercicio clave",
     "sport": "Fútbol",
@@ -678,6 +692,7 @@ export const VIDEOS: Video[] = [
   },
   {
     "id": "v-m-sofia-1",
+    "src": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
     "monitorId": "m-sofia",
     "caption": "Cadencia y marchas en subida",
     "sport": "Ciclismo",
@@ -688,6 +703,7 @@ export const VIDEOS: Video[] = [
   },
   {
     "id": "v-m-sofia-2",
+    "src": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
     "monitorId": "m-sofia",
     "caption": "Sesión de ciclismo: ejercicio clave",
     "sport": "Ciclismo",

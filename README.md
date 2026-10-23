@@ -24,12 +24,13 @@ npm test          # tests de reservas y filtros
   descontando reservas existentes (con solape por duración), horas pasadas y 2 h de antelación mínima. Doble pulsación protegida.
 - Reservas: próximas / historial / canceladas, detalle y cancelación (gratuita hasta 24 h antes). Estados `pending|confirmed|completed|cancelled`
   (`completed` se deriva al pasar la hora de fin). Al cancelar, el horario vuelve a quedar libre.
+- **Perfil de monitor** (Perfil → «Crea tu perfil»): datos, entrenamientos, disponibilidad semanal y vídeos (subida de archivo hasta 60 MB guardada en IndexedDB, o URL https). Se publica en feed, Explorar y reservas junto a los monitores de demostración, marcado como no verificado y sin etiqueta de prueba.
 - Onboarding opcional que ordena feed y resultados; perfil editable, notificaciones (sólo preferencia), borrado de datos locales.
 
 ## Qué es simulación / datos de demostración
 - `src/data/seed.ts`: 8 monitores, servicios, vídeos, **valoraciones y horarios ficticios**, marcados como "datos de prueba". Nadie está "verificado".
-- **Vídeos:** no se han podido verificar URLs públicas adecuadas (9:16, deportivas, con derechos), así que `Video.src` está vacío y el feed muestra una ilustración animada
-  con la etiqueta "Contenido de prueba · sin vídeo". El reproductor ya soporta `src` real: añade una URL mp4 accesible al vídeo correspondiente en `seed.ts`.
+- **Vídeos de demostración:** los 16 vídeos de `seed.ts` apuntan a clips de ejemplo públicos de Google (`gtv-videos-bucket`). Son vídeos reales pero **no son de deporte** y no se pudieron comprobar desde el entorno de desarrollo (red restringida). Si un clip no carga, el feed muestra la ilustración de sustitución. Cámbialos por tus mp4 verticales (9:16) editando `src`, o súbelos desde el perfil de monitor.
+- Los vídeos que sube un monitor viven en el navegador de ese dispositivo: no los ve nadie más hasta que haya backend + almacenamiento (Supabase Storage).
 - **Sin autenticación:** hay un único perfil local ("Invitado"). Todo se guarda en `localStorage` de ese navegador.
 - **Reservas locales:** la comprobación anti-duplicados se hace en el cliente (leyendo el almacenamiento justo antes de escribir). **No es segura frente a varios dispositivos**: en producción debe hacerla el servidor.
 - **Sin pagos:** no se cobra ni se piden datos de tarjeta. `Booking.paymentRef` queda reservado para una pasarela (p. ej. Stripe Connect, cuyo modelo de comisiones, devoluciones y disputas hay que definir).

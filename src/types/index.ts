@@ -31,6 +31,8 @@ export interface Video {
   monitorId: string
   /** URL de vídeo. Si falta, se muestra la sustitución visual de contenido de prueba. */
   src?: string
+  /** Si existe, el vídeo está guardado en IndexedDB del dispositivo (subido por el monitor). */
+  blobId?: string
   caption: string
   sport: Sport
   publishedAt: string
@@ -111,4 +113,13 @@ export interface Filters {
   maxPrice: number
   minRating: number
   availability: 'any' | 'week'
+}
+
+/** Contenido creado por el usuario como monitor (separado de los datos de demostración). */
+export interface UserContent {
+  monitor: Monitor
+  services: Service[]
+  videos: Video[]
+  availability: WeeklyAvailability
+  published: boolean
 }

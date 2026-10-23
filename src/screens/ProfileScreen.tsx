@@ -9,7 +9,7 @@ import { Avatar, Button, Chip } from '../components/ui'
 const LEVELS: Level[] = ['Principiante', 'Intermedio', 'Avanzado']
 
 export function ProfileScreen() {
-  const { profile, updateProfile, bookings, favorites, resetAll, showToast, catalog } = useApp()
+  const { myContent, profile, updateProfile, bookings, favorites, resetAll, showToast, catalog } = useApp()
   const [editing, setEditing] = useState(false)
   const [name, setName] = useState(profile.name)
   const [legal, setLegal] = useState(false)
@@ -43,6 +43,12 @@ export function ProfileScreen() {
         </div>
         {editing ? <Button className="!px-4 !py-2.5" onClick={save}>Guardar</Button> : <Button variant="light" className="!px-4 !py-2.5" onClick={() => { setName(profile.name); setEditing(true) }}>Editar</Button>}
       </div>
+
+      <Link to="/mi-perfil-monitor" className="mt-3 flex items-center justify-between rounded-2xl bg-brand p-4 text-white">
+        <span><b className="block text-[16px]">{myContent ? 'Mi perfil de monitor' : '¿Eres monitor? Crea tu perfil'}</b>
+          <span className="text-[13px] text-white/80">{myContent ? `${myContent.videos.length} vídeos · ${myContent.services.length} entrenamientos${myContent.published ? '' : ' · oculto'}` : 'Sube vídeos, fija tus horarios y recibe reservas'}</span></span>
+        <span aria-hidden="true" className="text-xl">›</span>
+      </Link>
 
       <div className="mt-3 grid grid-cols-2 gap-3">
         <Link to="/reservas" className={`${card} text-center`}><b className="block text-2xl text-brand">{upcoming}</b><span className="text-[13px] text-muted">Próximas reservas</span></Link>

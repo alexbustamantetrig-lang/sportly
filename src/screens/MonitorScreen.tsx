@@ -71,8 +71,8 @@ export function MonitorScreen() {
             <Info label="Experiencia" value={`${monitor.yearsExperience} años`} />
             <Info label="Idiomas" value={monitor.languages.join(', ')} />
             <Info label="Enseña a" value={monitor.levelsTaught.join(', ')} />
-            <Info label="Modalidades" value={[...new Set(services.map((s) => s.modality))].join(', ')} />
-            <div className="col-span-2"><Info label="Titulaciones" value={monitor.credentials.join('; ')} /></div>
+            <Info label="Modalidades" value={[...new Set(services.map((s) => s.modality))].join(', ') || '—'} />
+            {monitor.credentials.length > 0 && <div className="col-span-2"><Info label="Titulaciones" value={monitor.credentials.join('; ')} /></div>}
           </dl>
 
           <h3 className={h2}>Vídeos</h3>

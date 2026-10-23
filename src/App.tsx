@@ -7,6 +7,7 @@ import { MonitorScreen } from './screens/MonitorScreen'
 import { BookingFlowScreen } from './screens/BookingFlowScreen'
 import { BookingsScreen, BookingDetailScreen } from './screens/BookingsScreen'
 import { FavoritesScreen } from './screens/FavoritesScreen'
+import { MonitorEditorScreen } from './screens/MonitorEditorScreen'
 import { ProfileScreen } from './screens/ProfileScreen'
 import { EmptyState } from './components/ui'
 
@@ -27,6 +28,7 @@ export default function App() {
             <Route path="reservas/:id" element={<BookingDetailScreen />} />
             <Route path="favoritos" element={<FavoritesScreen />} />
             <Route path="perfil" element={<ProfileScreen />} />
+            <Route path="mi-perfil-monitor" element={<MonitorEditorScreen />} />
             <Route path="*" element={<EmptyState emoji="🧭" title="Página no encontrada" text="Vuelve al inicio para seguir descubriendo monitores." />} />
           </Route>
         </Routes>
