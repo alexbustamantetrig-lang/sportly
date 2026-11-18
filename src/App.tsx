@@ -1,4 +1,4 @@
-import { BrowserRouter, MemoryRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, HashRouter, MemoryRouter, Route, Routes } from 'react-router-dom'
 import { AppProvider } from './state/AppContext'
 import { Layout } from './components/Layout'
 import { FeedScreen } from './screens/FeedScreen'
@@ -12,7 +12,8 @@ import { ProfileScreen } from './screens/ProfileScreen'
 import { EmptyState } from './components/ui'
 
 // En entornos sin URLs propias (p. ej. una página incrustada) se usa un router en memoria.
-const Router = import.meta.env.VITE_ROUTER === 'memory' ? MemoryRouter : BrowserRouter
+// 'hash' para GitHub Pages (sin servidor que reescriba rutas).
+const Router = import.meta.env.VITE_ROUTER === 'memory' ? MemoryRouter : import.meta.env.VITE_ROUTER === 'hash' ? HashRouter : BrowserRouter
 
 export default function App() {
   return (

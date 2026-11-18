@@ -48,3 +48,8 @@ npm test          # tests de reservas y filtros
 - Disponibilidad como plantilla semanal sin excepciones ni vacaciones.
 - Textos legales, RGPD/consentimientos y derechos de imagen de los vídeos pendientes de definir.
 - Accesibilidad revisada a nivel básico (roles, etiquetas, foco), sin auditoría completa.
+
+## Publicar en GitHub Pages
+`npm run build:pages` genera `docs/` (rutas con `#`, rutas relativas). Se sube con el commit; en el repositorio:
+Settings → Pages → Source: *Deploy from a branch* → rama `claude/sportly-monitors-app-pejipk` (o `main` tras fusionar) → carpeta `/docs`.
+Vuelve a ejecutar `npm run build:pages` y haz commit cada vez que cambies la app.
