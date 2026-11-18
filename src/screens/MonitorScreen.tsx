@@ -75,6 +75,7 @@ export function MonitorScreen() {
             {monitor.credentials.length > 0 && <div className="col-span-2"><Info label="Titulaciones" value={monitor.credentials.join('; ')} /></div>}
           </dl>
 
+          {videos.length > 0 && (<>
           <h3 className={h2}>Vídeos</h3>
           <div className="no-scrollbar -mx-4 flex gap-3 overflow-x-auto px-4">
             {videos.map((v) => (
@@ -86,6 +87,7 @@ export function MonitorScreen() {
               </button>
             ))}
           </div>
+          </>)}
 
           <h3 className={h2}>Entrenamientos</h3>
           <ul className="grid gap-3">

@@ -1,13 +1,16 @@
 import type { Monitor, Review, Service, Video, WeeklyAvailability } from '../types'
 
+/** Ruta de un vídeo de `public/videos` válida en local y en GitHub Pages. */
+const clip = (file: string) => `${import.meta.env.BASE_URL}videos/${file}`
+
 /**
  * DATOS DE DEMOSTRACIÓN — todo lo de este archivo es ficticio.
  * Personas, valoraciones, vídeos y horarios no corresponden a profesionales reales.
  * Sustituir por datos de backend (ver services/api.ts) y mantener separado de usuarios y reservas reales.
  *
- * Vídeos: `Video.src` apunta a clips de ejemplo públicos (gtv-videos-bucket de Google). Son vídeos reales
- * pero NO son de deporte: sirven de relleno. Cambia `src` por tu mp4 vertical 9:16 o súbelos desde
- * «Perfil → Mi perfil de monitor». Si un vídeo no carga, el feed muestra la ilustración de sustitución.
+ * Vídeos: los reales viven en `public/videos/` (padel-1, snowboard-1, surf-1). Los vídeos sin clip real están
+ * `hidden` y no salen en el feed. Para publicar más: sube `deporte-N.mp4` a `public/videos/`, pon su `src` con
+ * `clip('archivo.mp4')` y cambia `status` a `"published"`.
  */
 
 export const MONITORS: Monitor[] = [
@@ -538,29 +541,27 @@ export const SERVICES: Service[] = [
 export const VIDEOS: Video[] = [
   {
     "id": "v-m-elena-1",
-    "src": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
     "monitorId": "m-elena",
     "caption": "3 claves para empezar a esquiar sin miedo",
     "sport": "Esquí",
     "publishedAt": "2026-03-10",
-    "status": "published",
+    "status": "hidden",
     "likes": 120,
     "isDemo": true
   },
   {
     "id": "v-m-elena-2",
-    "src": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
     "monitorId": "m-elena",
     "caption": "Sesión de esquí: ejercicio clave",
     "sport": "Esquí",
     "publishedAt": "2026-04-01",
-    "status": "published",
+    "status": "hidden",
     "likes": 60,
     "isDemo": true
   },
   {
     "id": "v-m-diego-1",
-    "src": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+    "src": clip("snowboard-1.mp4"),
     "monitorId": "m-diego",
     "caption": "Del carving al primer 180",
     "sport": "Snowboard",
@@ -571,18 +572,17 @@ export const VIDEOS: Video[] = [
   },
   {
     "id": "v-m-diego-2",
-    "src": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
     "monitorId": "m-diego",
     "caption": "Sesión de snowboard: ejercicio clave",
     "sport": "Snowboard",
     "publishedAt": "2026-05-02",
-    "status": "published",
+    "status": "hidden",
     "likes": 79,
     "isDemo": true
   },
   {
     "id": "v-m-marco-1",
-    "src": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
+    "src": clip("surf-1.mp4"),
     "monitorId": "m-marco",
     "caption": "Cómo levantarte en la tabla a la primera",
     "sport": "Surf",
@@ -593,40 +593,37 @@ export const VIDEOS: Video[] = [
   },
   {
     "id": "v-m-marco-2",
-    "src": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
     "monitorId": "m-marco",
     "caption": "Sesión de surf: ejercicio clave",
     "sport": "Surf",
     "publishedAt": "2026-06-03",
-    "status": "published",
+    "status": "hidden",
     "likes": 98,
     "isDemo": true
   },
   {
     "id": "v-m-laura-1",
-    "src": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
     "monitorId": "m-laura",
     "caption": "El saque que cambia tu partido",
     "sport": "Tenis",
     "publishedAt": "2026-06-13",
-    "status": "published",
+    "status": "hidden",
     "likes": 231,
     "isDemo": true
   },
   {
     "id": "v-m-laura-2",
-    "src": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
     "monitorId": "m-laura",
     "caption": "Sesión de tenis: ejercicio clave",
     "sport": "Tenis",
     "publishedAt": "2026-07-04",
-    "status": "published",
+    "status": "hidden",
     "likes": 117,
     "isDemo": true
   },
   {
     "id": "v-m-pablo-1",
-    "src": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+    "src": clip("padel-1.mp4"),
     "monitorId": "m-pablo",
     "caption": "La bandeja perfecta, paso a paso",
     "sport": "Pádel",
@@ -637,78 +634,71 @@ export const VIDEOS: Video[] = [
   },
   {
     "id": "v-m-pablo-2",
-    "src": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
     "monitorId": "m-pablo",
     "caption": "Sesión de pádel: ejercicio clave",
     "sport": "Pádel",
     "publishedAt": "2026-08-05",
-    "status": "published",
+    "status": "hidden",
     "likes": 136,
     "isDemo": true
   },
   {
     "id": "v-m-irene-1",
-    "src": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
     "monitorId": "m-irene",
     "caption": "Respira bien y nada sin cansarte",
     "sport": "Natación",
     "publishedAt": "2026-08-15",
-    "status": "published",
+    "status": "hidden",
     "likes": 305,
     "isDemo": true
   },
   {
     "id": "v-m-irene-2",
-    "src": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
     "monitorId": "m-irene",
     "caption": "Sesión de natación: ejercicio clave",
     "sport": "Natación",
     "publishedAt": "2026-04-06",
-    "status": "published",
+    "status": "hidden",
     "likes": 155,
     "isDemo": true
   },
   {
     "id": "v-m-raul-1",
-    "src": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
     "monitorId": "m-raul",
     "caption": "Control orientado: el ejercicio de 5 minutos",
     "sport": "Fútbol",
     "publishedAt": "2026-03-16",
-    "status": "published",
+    "status": "hidden",
     "likes": 342,
     "isDemo": true
   },
   {
     "id": "v-m-raul-2",
-    "src": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
     "monitorId": "m-raul",
     "caption": "Sesión de fútbol: ejercicio clave",
     "sport": "Fútbol",
     "publishedAt": "2026-05-07",
-    "status": "published",
+    "status": "hidden",
     "likes": 174,
     "isDemo": true
   },
   {
     "id": "v-m-sofia-1",
-    "src": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
     "monitorId": "m-sofia",
     "caption": "Cadencia y marchas en subida",
     "sport": "Ciclismo",
     "publishedAt": "2026-04-17",
-    "status": "published",
+    "status": "hidden",
     "likes": 379,
     "isDemo": true
   },
   {
     "id": "v-m-sofia-2",
-    "src": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
     "monitorId": "m-sofia",
     "caption": "Sesión de ciclismo: ejercicio clave",
     "sport": "Ciclismo",
     "publishedAt": "2026-06-08",
-    "status": "published",
+    "status": "hidden",
     "likes": 193,
     "isDemo": true
   }
